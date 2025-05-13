@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	background-image: url('https://i.pinimg.com/736x/96/6d/d0/966dd094f8f12ae1286c75953ae2c964.jpg');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập</title>
+  <style>
+    /* CSS cho giao diện đăng nhập */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Đăng nhập</h2>
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Gmail" required>
+      <input type="password" id="password" placeholder="Mật khẩu" required>
+      <button type="submit">Đăng nhập</button>
+    </form>
+    <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+  </div>
+
+  <script>
+    // Kiểm tra xem người dùng đã đăng nhập chưa
+    if (localStorage.getItem("user")) {
+      window.location.href = "home.html"; // Chuyển thẳng tới trang home nếu đã đăng nhập
+    }
+
+    // Xử lý sự kiện đăng nhập
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Ngừng gửi form
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Kiểm tra thông tin đăng nhập (ở đây chỉ làm ví dụ)
+      if (email === "test@gmail.com" && password === "123456") {
+        // Lưu thông tin người dùng vào localStorage
+        localStorage.setItem("user", JSON.stringify({ email: email }));
+
+        // Chuyển đến trang home
+        window.location.href = "home.html";
+      } else {
+        alert("Đăng nhập không thành công. Vui lòng kiểm tra lại.");
+      }
+    });
+  </script>
+
+</body>
+</html>

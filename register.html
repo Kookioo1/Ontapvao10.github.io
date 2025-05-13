@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký tài khoản</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/hinh-dep-5.jpg');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      color: white;
+      padding: 50px;
+    }
+    .form-container {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Đăng ký tài khoản</h1>
+
+  <div class="form-container">
+    <input type="email" id="register-email" placeholder="Email" required>
+    <input type="password" id="register-password" placeholder="Mật khẩu" required>
+    <input type="password" id="confirm-password" placeholder="Xác minh mật khẩu" required>
+    <button onclick="register()">Đăng ký</button>
+    <p>Đã có tài khoản? <a href="index.html">Đăng nhập</a></p>
+  </div>
+
+  <script>
+    function register() {
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      // Kiểm tra mật khẩu có khớp không
+      if (password !== confirmPassword) {
+        alert("Mật khẩu xác minh không khớp.");
+        return;
+      }
+
+      // Lưu thông tin người dùng vào localStorage
+      const user = {
+        email: email,
+        password: password
+      };
+
+      localStorage.setItem("user", JSON.stringify(user)); // Lưu thông tin người dùng
+
+      alert("Đăng ký thành công!");
+      window.location.href = "index.html"; // Chuyển về trang đăng nhập sau khi đăng ký
+    }
+  </script>
+
+</body>
+</html>
